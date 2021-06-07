@@ -14,8 +14,15 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('You are logged in!') }} 
+
                 </div>
+            </div>
+
+            <div class="link_mia_pagina">
+
+                <a href="{{ route('initial') }}">Vai alla mia pagina!</a>
+                
             </div>
         </div>
     </div>

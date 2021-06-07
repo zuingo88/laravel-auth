@@ -14,10 +14,10 @@ class GiocatoreSeeder extends Seeder
      */
     public function run()
     {
-        factory(Giocatore::class, 555)->create()
+        factory(Giocatore::class, 1000)->create()
                                       ->each(function($giocatore) {
                                         $squadras = Squadra::inRandomOrder()
-                                                    ->limit(11)
+                                                    ->limit(5)
                                                     ->get();
                                         $giocatore -> squadras() -> attach($squadras);
                                         $giocatore -> save();
