@@ -11,10 +11,10 @@ class myController extends Controller
 {
     public function initial() {
 
-        $squadras = Squadra::all();
+        
 
         $naziones = Nazione::all();
 
-        return view('pages.initial', compact('squadras', 'naziones'));
+        return view('pages.initial', compact('naziones'));
     }
 }

@@ -10,6 +10,6 @@ $factory->define(Giocatore::class, function (Faker $faker) {
         
         'firstname'=>$faker->firstNameMale,
         'lastname'=>$faker->lastName,
-        'age'=>$faker->numberBetween(16, 38),
+        'age'=>$faker->numberBetween(10, 100),
     ];
 });
