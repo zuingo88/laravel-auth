@@ -14,7 +14,7 @@
 
                             @foreach ($nazione->squadras as $squadra)
                             <a href="{{ route('squadra', $squadra->id) }}">
-                                <h3>{{ $squadra->name }} ({{ $squadra->points }} punti)</h3>
+                                <h3>{{ $squadra->name }} ({{ $squadra->points }} punti) <a href="{{ route('edit', $squadra->id ) }}"><i class="fas fa-edit"></i></a></h3>
                             </a>
                                 <p>Fans: {{ $squadra->giocatores->count() }} </p>
                             @endforeach

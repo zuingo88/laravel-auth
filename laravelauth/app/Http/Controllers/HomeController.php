@@ -30,8 +30,8 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function squadra($id) {
-
+    public function squadra($id) 
+    {
         $squadra = Squadra::findOrFail($id);
 
         return view('pages.squadra', compact('squadra'));
@@ -63,6 +63,36 @@ class HomeController extends Controller
 
         $squadra->giocatores()->attach($request->get('giocatore_id'));
         $squadra->save();
+
+        return redirect()->route('initial');
+    }
+
+    public function edit($id) 
+    {
+        $squadra = Squadra::findOrFail($id);
+        $naziones =Nazione::all();
+        $giocatores = Giocatore::all();
+
+        return view('pages.edit', compact('squadra', 'naziones', 'giocatores'));
+    }
+
+    public function update(Request $request, $id) 
+    {
+        $validated = $request->validate(
+            [
+                'name'=>'required|string|min:3',
+                'points'=>'required|integer|min:5|max:100'
+            ]
+            );
+
+        $squadra = Squadra::findOrFail($id);
+        $squadra->update($validated);
+
+        $nazione = Nazione::findOrFail($request->nazione_id);
+        $squadra->nazione()->associate($nazione);
+        $squadra->save();
+
+        $Squadra->giocatores()->sync($request->giocatore_id);
 
         return redirect()->route('initial');
     }
